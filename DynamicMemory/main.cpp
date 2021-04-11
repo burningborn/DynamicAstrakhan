@@ -2,9 +2,10 @@
 using namespace std;
 
 #define tab "\t"
-
+void FillRand(double arr[], const int n);
 template<typename T>void FillRand(T arr[], const int n);
-void FillRand(int** arr, const int m, const int n);
+template<typename T>void FillRand(T** arr, const int m, const int n);
+void FillRand(double** arr, const int m, const int n);
 template<typename T>void Print(T arr[], const int n);
 template<typename T>void Print(T** arr, const int m, const int n);
 
@@ -90,11 +91,11 @@ void main()
 	cout << "Введите количество строк: "; cin >> m;
 	cout << "Введите количество элементов строки: "; cin >> n;
 	//1)Создаем массив указателей, и сохраняем его адрес в указатель на указатель:
-	int** arr = new int*[m];
+	double** arr = new double*[m];
 	//2)Выделяем память под строки двумерного массива:
 	for (int i = 0; i < m; i++)
 	{
-		arr[i] = new int[n] {};
+		arr[i] = new double[n] {};
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -140,20 +141,38 @@ void main()
 #endif // DEBUG_ARRAYS
 
 }
-void FillRand(int arr[], const int n)
+void FillRand(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = rand() % 1000;
+		arr[i] /= 100;
+	}
+}
+template<typename T>void FillRand(T arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
 		arr[i] = rand() % 100;
 	}
 }
-void FillRand(int** arr, const int m, const int n)
+template<typename T>void FillRand(T** arr, const int m, const int n)
 {
 	for (int i = 0; i < m; i++)
 	{
 		for (int j = 0; j < n; j++)
 		{
 			arr[i][j] = rand() % 100;
+		}
+	}
+}
+void FillRand(double** arr, const int m, const int n)
+{
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			arr[i][j] = double(rand() % 10000)/100;
 		}
 	}
 }
@@ -336,7 +355,7 @@ template<typename T>void push_col_back(T** arr, const int m, int& n)
 	for (int i = 0; i < m; i++)
 	{
 		//1) Создаем строку нужного размера:
-		int* buffer = new int[n + 1]{};
+		T* buffer = new T[n + 1]{};
 		//2) Копируем исходную строку в новую:
 		for (int j = 0; j < n; j++)buffer[j] = arr[i][j];
 		//3) Удаляем исходную строку:
