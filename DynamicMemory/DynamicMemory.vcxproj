@@ -143,7 +143,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="erase.cpp" />
+    <ClCompile Include="erase_row.cpp" />
+    <ClCompile Include="insert.cpp" />
+    <ClCompile Include="insert_row.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pop_back.cpp" />
+    <ClCompile Include="pop_front.cpp" />
+    <ClCompile Include="pop_row_back.cpp" />
+    <ClCompile Include="pop_row_front.cpp" />
+    <ClCompile Include="Print.cpp" />
+    <ClCompile Include="push_back.cpp" />
+    <ClCompile Include="push_front.cpp" />
+    <ClCompile Include="push_row_back.cpp" />
+    <ClCompile Include="push_row_front.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FillRand.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
