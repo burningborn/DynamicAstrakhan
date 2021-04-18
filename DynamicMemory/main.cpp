@@ -2,10 +2,7 @@
 using namespace std;
 #define tab "\t"
 
-void FillRand(double arr[], const int n);
-template<typename T>void FillRand(T arr[], const int n);
-template<typename T>void FillRand(T** arr, const int m, const int n);
-void FillRand(double** arr, const int m, const int n);
+
 //template<typename T>void Print(T arr[], const int n);
 //template<typename T>void Print(T** arr, const int m, const int n);
 //
@@ -21,6 +18,7 @@ void FillRand(double** arr, const int m, const int n);
 //template<typename T>void pop_row_front(T**& arr, int& m, const int n);
 //template<typename T>void erase_row(T**& arr, int& m, const int n, int index);
 
+#include"FillRand.h"
 #include"Print.cpp"
 
 #include"push_back.cpp"
@@ -76,7 +74,6 @@ void main()
 	Print(arr, n);
 
 	cout << "Введите индекс удавляемого элемента: "; cin >> index;
-	erase(arr, n, index);
 	Print(arr, n);
 	delete[] arr;
 	system("pause");
@@ -90,11 +87,11 @@ void main()
 	cout << "Введите количество строк: "; cin >> r;
 	cout << "Введите количество столбцов: "; cin >> c;
 	//1)создаем массив указателей
-	double** arr2 = new double* [r];
+	char** arr2 = new char* [r];
 	//2)выделяем память под строки двумерного массива:
 	for (int i = 0; i < r; i++)
 	{
-		arr2[i] = new double[c] {};
+		arr2[i] = new char[c] {};
 	}
 	//----------------ИСПОЛЬЗОВАНИЕ ДВУМЕРНОГО ДИНАМИЧЕСКОГО МАССИВА--------------
 	FillRand(arr2, r, c);
@@ -136,40 +133,4 @@ void main()
 	//2) Удаление массива указателей:
 	delete[] arr2;
 #endif DYNAMIC_MEMORY
-}
-
-void FillRand(double arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = rand() % 1000;
-		arr[i] /= 100;
-	}
-}
-template<typename T>void FillRand(T arr[], const int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		arr[i] = rand() % 100;
-	}
-}
-template<typename T>void FillRand(T** arr, const int m, const int n)
-{
-	for (int i = 0; i < m; i++)
-	{
-		for (int j = 0; j < n; j++)
-		{
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(double** arr, const int m, const int n)
-{
-	for (int i = 0; i < m; i++)
-	{
-		for (int j = 0; j < n; j++)
-		{
-			arr[i][j] = double(rand() % 10000) / 100;
-		}
-	}
 }

@@ -145,6 +145,7 @@
   <ItemGroup>
     <ClCompile Include="erase.cpp" />
     <ClCompile Include="erase_row.cpp" />
+    <ClCompile Include="FillRand.cpp" />
     <ClCompile Include="insert.cpp" />
     <ClCompile Include="insert_row.cpp" />
     <ClCompile Include="main.cpp" />
